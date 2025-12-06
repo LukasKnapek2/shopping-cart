@@ -60,7 +60,7 @@ const App = () => {
   return (
     <BrowserRouter>
       {/* NavBar is outside Routes so it stays visible on every page */}
-      <NavBar />
+      <NavBar cartItemsCount={cartItems.length} />
 
       <Routes>
         {/* When the path is "/", show HomePage */}
