@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import styles from "./ShopPage.module.css";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 
@@ -45,6 +46,10 @@ const ShopPage = ({ onAddToCart }) => {
       </div>
     </div>
   );
+};
+
+ShopPage.propTypes = {
+  onAddToCart: PropTypes.func.isRequired,
 };
 
 export default ShopPage;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import styles from "./NavBar.module.css";
 
 const NavBar = ({ cartItemsCount }) => {
@@ -24,6 +25,10 @@ const NavBar = ({ cartItemsCount }) => {
       </ul>
     </nav>
   );
+};
+
+NavBar.propTypes = {
+  cartItemsCount: PropTypes.number.isRequired,
 };
 
 export default NavBar;

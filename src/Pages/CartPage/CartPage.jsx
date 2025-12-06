@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./CartPage.module.css";
 import CartItem from "../../Components/CartItem/CartItem";
 
@@ -9,7 +10,6 @@ const CartPage = ({ onRemoveItem, onIncrease, onDecrease, cartItems }) => {
       <div className={styles.cartItems}>
         {cartItems.map((item, index) => (
           <CartItem
-            key={index}
             item={item}
             onIncrease={onIncrease}
             onDecrease={onDecrease}
@@ -19,6 +19,13 @@ const CartPage = ({ onRemoveItem, onIncrease, onDecrease, cartItems }) => {
       </div>
     </div>
   );
+};
+
+CartPage.propTypes = {
+  cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onRemoveItem: PropTypes.func.isRequired,
+  onIncrease: PropTypes.func.isRequired,
+  onDecrease: PropTypes.func.isRequired,
 };
 
 export default CartPage;
