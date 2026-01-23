@@ -5,10 +5,16 @@ import HomePage from "./Pages/HomePage/HomePage";
 import ShopPage from "./Pages/ShopPage/ShopPage";
 import CartPage from "./Pages/CartPage/CartPage";
 
+export type CartItem = {
+  title: string;
+  price: number;
+  imageUrl: string;
+  quantity: number;
+};
 const App = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   console.log(cartItems);
-  const handleAddToCart = (productToAdd, quantity) => {
+  const handleAddToCart = (productToAdd:CartItem, quantity:number) => {
     setCartItems((prevItems) => {
       const itemExists = prevItems.find(
         (item) => item.title === productToAdd.title
@@ -28,13 +34,13 @@ const App = () => {
     });
   };
 
-  const handleRemoveItem = (itemToRemove) => {
+  const handleRemoveItem = (itemToRemove:CartItem) => {
     setCartItems((prevItems) =>
       prevItems.filter((item) => item.title !== itemToRemove.title)
     );
   };
 
-  const handleIncreaseQuantity = (itemToIncrease) => {
+  const handleIncreaseQuantity = (itemToIncrease:CartItem) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.title === itemToIncrease.title
@@ -44,7 +50,7 @@ const App = () => {
     );
   };
 
-  const handleDecreaseQuantity = (itemToDecrease) => {
+  const handleDecreaseQuantity = (itemToDecrease:CartItem) => {
     setCartItems(
       (prevItems) =>
         prevItems

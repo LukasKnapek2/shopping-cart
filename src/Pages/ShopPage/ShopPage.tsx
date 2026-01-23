@@ -2,12 +2,28 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./ShopPage.module.css";
 import ProductCard from "../../Components/ProductCard/ProductCard";
+import { CartItem } from "../../App";
+type ShopPageProps = {
+  onAddToCart: (productToAdd: CartItem, quantity: number) => void;
+}
+type Product = {
+  category: string,
+  description: string,
+  id: number,
+  image: string,
+  price: number,
+  rating: {
+    rate: number,
+    count: number
+  },
+  title: string
+}
 
-const ShopPage = ({ onAddToCart }) => {
-  const [products, setProducts] = useState([]);
+const ShopPage = ({ onAddToCart }: ShopPageProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const [error, setError] = useState<Error | null>(null);
+console.log(products)
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -17,8 +33,12 @@ const ShopPage = ({ onAddToCart }) => {
         }
         const data = await response.json();
         setProducts(data);
+
       } catch (e) {
-        setError(e.message);
+        if (e instanceof Error) {
+        setError(e);
+      }
+
       } finally {
         setLoading(false);
       }
@@ -28,7 +48,7 @@ const ShopPage = ({ onAddToCart }) => {
   }, []); // Empty dependency array means this effect runs once on mount
 
   if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className={styles.shopPage}>
@@ -53,3 +73,5 @@ ShopPage.propTypes = {
 };
 
 export default ShopPage;
+
+
