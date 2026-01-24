@@ -4,13 +4,8 @@ import NavBar from "./Components/NavBar/NavBar";
 import HomePage from "./Pages/HomePage/HomePage";
 import ShopPage from "./Pages/ShopPage/ShopPage";
 import CartPage from "./Pages/CartPage/CartPage";
+import { CartItem } from "./types";
 
-export type CartItem = {
-  title: string;
-  price: number;
-  imageUrl: string;
-  quantity: number;
-};
 const App = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   console.log(cartItems);

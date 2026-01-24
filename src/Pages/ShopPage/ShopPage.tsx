@@ -2,21 +2,10 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./ShopPage.module.css";
 import ProductCard from "../../Components/ProductCard/ProductCard";
-import { CartItem } from "../../App";
+import { CartItem } from "../../types";
+import { Product } from "../../types";
 type ShopPageProps = {
   onAddToCart: (productToAdd: CartItem, quantity: number) => void;
-}
-type Product = {
-  category: string,
-  description: string,
-  id: number,
-  image: string,
-  price: number,
-  rating: {
-    rate: number,
-    count: number
-  },
-  title: string
 }
 
 const ShopPage = ({ onAddToCart }: ShopPageProps) => {
@@ -31,7 +20,7 @@ console.log(products)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
+        const data: Product[]= await response.json();
         setProducts(data);
 
       } catch (e) {
