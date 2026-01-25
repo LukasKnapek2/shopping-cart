@@ -7,14 +7,16 @@ export type CartItem = {
 };
 
 export type Product = {
-  category: string,
-  description: string,
-  id: number,
-  image: string,
-  price: number,
+  category: string;
+  description: string;
+  id: number;
+  image: string;
+  price: number;
   rating: {
-    rate: number,
-    count: number
-  },
-  title: string
-}
+    rate: number;
+    count: number;
+  };
+  title: string;
+};
+
+export type AddToCartHandler = (product: Product, quantity: number) => void;

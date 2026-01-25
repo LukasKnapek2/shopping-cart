@@ -1,15 +1,14 @@
 import React from "react";
 import { useState } from "react";
-//import PropTypes from "prop-types";
 import styles from "./ProductCard.module.css";
-type ProductCardProps = {
-  title: string;
-  price: number;
-  imageUrl: string;
-  onAddToCart: (productToAdd: { title: string; price: number; imageUrl: string }, quantity: number) => void;
-}
+import { Product, AddToCartHandler } from "../../types";
 
-const ProductCard = ({ title, price, imageUrl, onAddToCart } : ProductCardProps) => {
+type ProductCardProps = {
+  product: Product;
+  onAddToCart: AddToCartHandler;
+};
+
+const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
   const [quantity, setQuantity] = useState<number | string>(1);
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,14 +30,14 @@ const ProductCard = ({ title, price, imageUrl, onAddToCart } : ProductCardProps)
 
   const handleAddToCart = () => {
     const quantityToAdd = Number(quantity) >= 1 ? Number(quantity) : 1;
-    onAddToCart({ title, price, imageUrl }, quantityToAdd);
+    onAddToCart(product, quantityToAdd);
   };
 
   return (
     <div className={styles.productCard}>
-      <img src={imageUrl} alt={title} />
-      <h3>{title}</h3>
-      <p>${price.toFixed(2)}</p>
+      <img src={product.image} alt={product.title} className={styles.productImage} />
+      <h3>{product.title}</h3>
+      <p>${product.price.toFixed(2)}</p>
 
       <div className={styles.controls}>
         <button onClick={decrementQuantity}>-</button>
@@ -50,12 +49,5 @@ const ProductCard = ({ title, price, imageUrl, onAddToCart } : ProductCardProps)
     </div>
   );
 };
-
-/* ProductCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  onAddToCart: PropTypes.func.isRequired,
-}; */
 
 export default ProductCard;
