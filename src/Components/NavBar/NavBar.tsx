@@ -1,34 +1,45 @@
 import React from "react";
-import { Link } from "react-router-dom";
-//import PropTypes from "prop-types";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
 const NavBar = ({ cartItemsCount }: { cartItemsCount: number }) => {
   return (
-    <nav className={styles.navBar}>
-      <ul className={styles.navList}>
-        <li>
-          <Link to="/" className={styles.navLink}>
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/shop" className={styles.navLink}>
-            Shop
-          </Link>
-        </li>
-        <li>
-          <Link to="/cart" className={styles.navLink}>
-            Cart ({cartItemsCount})
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <header className={styles.header}>
+      <nav className={styles.navBar}>
+        <Link to="/" className={styles.brand}>
+          Shop_Name
+        </Link>
+        <ul className={styles.navList}>
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/shop"
+              className={({ isActive }) =>
+                isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+              }
+            >
+              Shop
+            </NavLink>
+          </li>
+        </ul>
+        <Link to="/cart" className={styles.cartLink}>
+          🛒
+          {cartItemsCount > 0 && (
+            <span className={styles.cartBadge}>{cartItemsCount}</span>
+          )}
+        </Link>
+      </nav>
+    </header>
   );
 };
-
-/* NavBar.propTypes = {
-  cartItemsCount: PropTypes.number.isRequired,
-}; */
 
 export default NavBar;

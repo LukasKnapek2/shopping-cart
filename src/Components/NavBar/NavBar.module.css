@@ -1,10 +1,26 @@
-/* NavBar.module.css */
+.header {
+  background-color: var(--surface-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 .navBar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  padding: 1rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 70px;
+}
+
+.brand {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
 .navList {
@@ -12,17 +28,57 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 1.5rem;
 }
 
 .navLink {
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border-radius: 4px;
-  transition: background-color 0.2s ease-in-out;
+  font-size: 2rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.2s ease-in-out;
 }
 
-.navLink:hover {
-  background-color: #555;
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease-in-out;
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: 100%;
+}
+
+.navLink.active {
+  color: var(--primary-color);
+}
+
+.cartLink {
+  position: relative;
+  font-size: 1.75rem; /* Makes the emoji bigger */
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
