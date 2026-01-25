@@ -79,6 +79,7 @@ const App = () => {
           element={
             <CartPage
               cartItems={cartItems}
+              id={cartItems.id}
               onRemoveItem={handleRemoveItem}
               onIncrease={handleIncreaseQuantity}
               onDecrease={handleDecreaseQuantity}

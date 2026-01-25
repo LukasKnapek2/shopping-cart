@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
-import ProductCard from "./ProductCard.jsx";
+import ProductCard from "./ProductCard.tsx";
 
 // The 'describe' block creates a test suite, grouping related tests for the ProductCard component.
 describe("ProductCard", () => {

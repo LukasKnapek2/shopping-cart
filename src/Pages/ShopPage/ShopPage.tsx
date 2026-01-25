@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import styles from "./ShopPage.module.css";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import { CartItem } from "../../types";
 import { Product } from "../../types";
 type ShopPageProps = {
-  onAddToCart: (productToAdd: CartItem, quantity: number) => void;
+onAddToCart: (productToAdd: { title: string; price: number; imageUrl: string }, quantity: number) => void;
 }
 
 const ShopPage = ({ onAddToCart }: ShopPageProps) => {
@@ -57,10 +57,10 @@ console.log(products)
   );
 };
 
-ShopPage.propTypes = {
+/* ShopPage.propTypes = {
   onAddToCart: PropTypes.func.isRequired,
 };
-
+ */
 export default ShopPage;
 
 

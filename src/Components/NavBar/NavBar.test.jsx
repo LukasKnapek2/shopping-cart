@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import NavBar from "./NavBar.jsx";
+import NavBar from "./NavBar.tsx";
 import { MemoryRouter } from "react-router-dom";
 
 describe("NavBar", () => {

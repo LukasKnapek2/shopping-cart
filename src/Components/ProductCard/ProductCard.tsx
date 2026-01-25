@@ -1,12 +1,18 @@
 import React from "react";
 import { useState } from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import styles from "./ProductCard.module.css";
+type ProductCardProps = {
+  title: string;
+  price: number;
+  imageUrl: string;
+  onAddToCart: (productToAdd: { title: string; price: number; imageUrl: string }, quantity: number) => void;
+}
 
-const ProductCard = ({ title, price, imageUrl, onAddToCart }) => {
-  const [quantity, setQuantity] = useState(1);
+const ProductCard = ({ title, price, imageUrl, onAddToCart } : ProductCardProps) => {
+  const [quantity, setQuantity] = useState<number | string>(1);
 
-  const handleQuantityChange = (e) => {
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === "") {
       setQuantity("");
@@ -45,11 +51,11 @@ const ProductCard = ({ title, price, imageUrl, onAddToCart }) => {
   );
 };
 
-ProductCard.propTypes = {
+/* ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
   onAddToCart: PropTypes.func.isRequired,
-};
+}; */
 
 export default ProductCard;

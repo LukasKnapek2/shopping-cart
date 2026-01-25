@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import styles from "./NavBar.module.css";
 
-const NavBar = ({ cartItemsCount }) => {
+const NavBar = ({ cartItemsCount }: { cartItemsCount: number }) => {
   return (
     <nav className={styles.navBar}>
       <ul className={styles.navList}>
@@ -27,8 +27,8 @@ const NavBar = ({ cartItemsCount }) => {
   );
 };
 
-NavBar.propTypes = {
+/* NavBar.propTypes = {
   cartItemsCount: PropTypes.number.isRequired,
-};
+}; */
 
 export default NavBar;

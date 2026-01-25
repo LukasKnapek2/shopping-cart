@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
-import CartPage from "./CartPage.jsx";
+import CartPage from "./CartPage.tsx";
 
 describe("CartPage", () => {
   const mockItems = [
